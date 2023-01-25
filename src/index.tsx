@@ -6,11 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { PokemonDetails } from "./components/PokemonDetails";
 import ErrorPage from "./components/ErrorPage";
+import Home from "./components/Home/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
+    element: <Home />,
     children: [
       {
         path: "",

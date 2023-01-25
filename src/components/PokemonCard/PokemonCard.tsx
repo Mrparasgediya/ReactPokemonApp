@@ -9,7 +9,7 @@ interface PokemonCardProps {
 
 const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
   return (
-    <div className="card col-xl-2 col-lg-3  col-md-3 col-sm-5 shadow ">
+    <div className="card col-xl-2 col-lg-3 col-md-3 col-sm-5 shadow pokemon-card">
       <img
         src={
           pokemon.imageUrl ||

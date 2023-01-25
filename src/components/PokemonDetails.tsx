@@ -7,22 +7,32 @@ export const PokemonDetails = () => {
   const { nameOrId } = useParams();
   const [pokemon, setPokemon] = useState<Pokemon | undefined>(undefined);
   const [error, setError] = useState<undefined | string>(undefined);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchPokemonDetails = async () => {
     if (nameOrId) {
       try {
+        setIsLoading(true);
         const res = await fetchPokemonByIdOrName(nameOrId);
         setPokemon(res);
       } catch (error: any) {
         setError(error?.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
 
   useEffect(() => {
     fetchPokemonDetails();
-  }, []);
+  }, [nameOrId]);
 
+  if (isLoading) {
+    return <div>Loading Pokemon</div>;
+  }
+  if (error) {
+    return <div className="text-danger text-center fs-1">Error: {error}</div>;
+  }
   if (pokemon) {
     return (
       <div className="card mx-auto my-5 shadow " style={{ width: "18rem" }}>
@@ -56,11 +66,6 @@ export const PokemonDetails = () => {
         </ul>
       </div>
     );
-  } else {
-    if (error) {
-      return <div className="text-danger text-center fs-1">Error: {error}</div>;
-    } else {
-      return <div>Loading Pokemon</div>;
-    }
   }
+  return null;
 };

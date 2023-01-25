@@ -3,7 +3,7 @@ import Pokemon from "./types/Pokemon";
 
 export const fetchPokemons = async (): Promise<Pokemon[]> => {
   const { data } = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon/?limit=20"
+    "https://pokeapi.co/api/v2/pokemon?limit=20"
   );
   const pokemons: Pokemon[] = data.results.map(
     (currPokemon: any, index: number): Pokemon => {
