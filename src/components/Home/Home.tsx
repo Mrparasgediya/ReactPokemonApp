@@ -16,7 +16,7 @@ const Home = () => {
   };
   return (
     <>
-      <h1 style={{ textDecoration: "none" }}>
+      <h1 style={{}}>
         <Link to="/">PokeApi</Link>
       </h1>
       <form onSubmit={searchPokemonFormSubmitHandler}>
@@ -25,7 +25,7 @@ const Home = () => {
           placeholder="Enter id or name"
           ref={searchInputRef}
         />
-        <button type="submit">
+        <button type="submit" className="">
           <SearchIcon />
         </button>
       </form>
