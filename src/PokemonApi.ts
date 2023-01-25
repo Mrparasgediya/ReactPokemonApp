@@ -1,12 +1,11 @@
 import axios from "axios";
 import Pokemon from "./types/Pokemon";
 
-export const fetchPokemon = async (): Promise<Pokemon[]> => {
+export const fetchPokemons = async (): Promise<Pokemon[]> => {
   const { data } = await axios.get(
     "https://pokeapi.co/api/v2/pokemon/?limit=20"
   );
-
-  const pokemon: Pokemon[] = data.results.map(
+  const pokemons: Pokemon[] = data.results.map(
     (currPokemon: any, index: number): Pokemon => {
       return {
         height: 0,
@@ -20,12 +19,15 @@ export const fetchPokemon = async (): Promise<Pokemon[]> => {
       };
     }
   );
-  return pokemon;
+  return pokemons;
 };
 
-export const fetchPokemonById = async (id: number): Promise<Pokemon> => {
-  const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  console.log(data);
+export const fetchPokemonByIdOrName = async (
+  nameOrId: string
+): Promise<Pokemon> => {
+  const { data } = await axios.get(
+    `https://pokeapi.co/api/v2/pokemon/${nameOrId}`
+  );
   return {
     id: data.id,
     name: data.name,

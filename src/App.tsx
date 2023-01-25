@@ -1,34 +1,35 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import PokemonCardsContainer from "./components/PokemonCardsContainer/PokemonCardsContainer";
-import { fetchPokemon } from "./PokemonApi";
+import { fetchPokemons } from "./PokemonApi";
 import Pokemon from "./types/Pokemon";
 
 function App() {
-  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [error, setError] = useState<string | undefined>(undefined);
 
-  const fetchPokemonData = async () => {
+  const fetchPokemonsData = async () => {
     try {
-      const response: Pokemon[] = await fetchPokemon();
-      setPokemon(response);
-    } catch (error) {
-      console.log(error);
+      const response: Pokemon[] = await fetchPokemons();
+      setPokemons(response);
+    } catch (error: any) {
+      setError(error.message);
     }
   };
 
   useEffect(() => {
-    fetchPokemonData();
+    fetchPokemonsData();
   }, []);
 
-  return (
-    <>
-      {pokemon.length ? (
-        <PokemonCardsContainer pokemon={pokemon}></PokemonCardsContainer>
-      ) : (
-        <div>Loading Pokemon</div>
-      )}
-    </>
-  );
+  if (pokemons.length) {
+    return <PokemonCardsContainer pokemons={pokemons} />;
+  } else {
+    if (error) {
+      return <div className="text-danger fs-1 text-center">Error: {error}</div>;
+    } else {
+      return <div>Loading Pokemons</div>;
+    }
+  }
 }
 
 export default App;

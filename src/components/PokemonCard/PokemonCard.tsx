@@ -20,7 +20,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
       />
       <div className="card-body text-center">
         <h4 className="card-title">{pokemon.name}</h4>
-        <Link to={`/details/${pokemon.id}`}>
+        <Link to={`/pokemons/${pokemon.name}`}>
           <button className="btn btn-info">show Detail</button>
         </Link>
       </div>
