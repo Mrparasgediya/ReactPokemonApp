@@ -5,27 +5,27 @@ import { fetchPokemon } from "./PokemonApi";
 import Pokemon from "./types/Pokemon";
 
 function App() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
-  const fetchPokemons = async () => {
+  const fetchPokemonData = async () => {
     try {
-      const response = await fetchPokemon();
-      setPokemons(response);
+      const response: Pokemon[] = await fetchPokemon();
+      setPokemon(response);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchPokemons();
+    fetchPokemonData();
   }, []);
 
   return (
     <>
-      {pokemons.length ? (
-        <PokemonCardsContainer pokemons={pokemons}></PokemonCardsContainer>
+      {pokemon.length ? (
+        <PokemonCardsContainer pokemon={pokemon}></PokemonCardsContainer>
       ) : (
-        <div>Loading Pokemons</div>
+        <div>Loading Pokemon</div>
       )}
     </>
   );

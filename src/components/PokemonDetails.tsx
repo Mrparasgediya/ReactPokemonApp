@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Pokemon, { PokemonTypes } from "../types/Pokemon";
-import { useLocation, Link, useParams } from "react-router-dom";
+import Pokemon from "../types/Pokemon";
+import { Link, useParams } from "react-router-dom";
 import { fetchPokemonById } from "../PokemonApi";
 
 export const PokemonDetails = () => {
@@ -41,7 +41,7 @@ export const PokemonDetails = () => {
           {pokemon.types.map((currPokemonType, idx) => {
             return (
               <span key={idx} className="badge bg-secondary mx-1 bg-info">
-                {PokemonTypes[currPokemonType]}
+                {currPokemonType}
               </span>
             );
           })}

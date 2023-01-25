@@ -4,15 +4,13 @@ import PokemonCard from "../PokemonCard/PokemonCard";
 import "./PokemonCardsContainer.css";
 
 interface PokemonCardsContainerProps {
-  pokemons: Pokemon[];
+  pokemon: Pokemon[];
 }
 
-const PokemonCardsContainer: FC<PokemonCardsContainerProps> = ({
-  pokemons,
-}) => {
+const PokemonCardsContainer: FC<PokemonCardsContainerProps> = ({ pokemon }) => {
   return (
     <div className="container grid gap-3 row mx-auto my-5">
-      {pokemons.map((currPokemon, idx) => (
+      {pokemon.map((currPokemon, idx) => (
         <PokemonCard pokemon={currPokemon} key={idx} />
       ))}
     </div>
