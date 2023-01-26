@@ -16,19 +16,25 @@ const Home = () => {
   };
   return (
     <>
-      <h1 style={{}}>
-        <Link to="/">PokeApi</Link>
-      </h1>
-      <form onSubmit={searchPokemonFormSubmitHandler}>
-        <input
-          type="text"
-          placeholder="Enter id or name"
-          ref={searchInputRef}
-        />
-        <button type="submit" className="">
-          <SearchIcon />
-        </button>
-      </form>
+      <nav className="border mb-5 p-4">
+        <div
+          style={{ height: "100% !important" }}
+          className="p-0 container d-flex items-center justify-content-between "
+        >
+          <Link to="/">PokeApi</Link>
+          <form onSubmit={searchPokemonFormSubmitHandler}>
+            <input
+              type="text"
+              placeholder="Enter id or name"
+              ref={searchInputRef}
+            />
+            <button type="submit" className="">
+              <SearchIcon />
+            </button>
+          </form>
+        </div>
+      </nav>
+
       <Outlet></Outlet>
     </>
   );
