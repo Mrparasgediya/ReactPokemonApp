@@ -3,10 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { PokemonDetails } from "./components/PokemonDetails";
 import ErrorPage from "./components/ErrorPage";
-import Home from "./components/Home/Home";
+import Home from "./components/Home";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "pokemons/",
         children: [
+          {
+            path: "",
+            element: <Navigate to="/" />,
+          },
           {
             path: ":nameOrId",
             element: <PokemonDetails />,

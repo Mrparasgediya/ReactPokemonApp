@@ -1,41 +1,29 @@
-import { useEffect, useState } from "react";
-import Pokemon from "../types/Pokemon";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchPokemonByIdOrName } from "../PokemonApi";
+import usePokemonDetailsApi from "../hooks/usePokemonDetailsApi";
 
 export const PokemonDetails = () => {
   const { nameOrId } = useParams();
-  const [pokemon, setPokemon] = useState<Pokemon | undefined>(undefined);
-  const [error, setError] = useState<undefined | string>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchPokemonDetails = async () => {
-    if (nameOrId) {
-      try {
-        setIsLoading(true);
-        const res = await fetchPokemonByIdOrName(nameOrId);
-        setPokemon(res);
-      } catch (error: any) {
-        setError(error?.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
+  const { isLoading, error, pokemon } = usePokemonDetailsApi(nameOrId);
 
   useEffect(() => {
-    fetchPokemonDetails();
-  }, [nameOrId]);
+    console.log(isLoading, error, pokemon);
+  }, [isLoading, error, pokemon]);
 
   if (isLoading) {
     return <div>Loading Pokemon</div>;
   }
+
   if (error) {
     return <div className="text-danger text-center fs-1">Error: {error}</div>;
   }
+
   if (pokemon) {
     return (
-      <div className="card mx-auto my-5 shadow " style={{ width: "18rem" }}>
+      <div
+        className="card mx-auto my-5 shadow glass"
+        style={{ width: "18rem" }}
+      >
         <img
           className="card-img-top"
           src={

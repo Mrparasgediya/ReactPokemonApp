@@ -1,6 +1,5 @@
 import { FC } from "react";
-import Pokemon from "../../types/Pokemon";
-import "./PokemonCard.css";
+import Pokemon from "../types/Pokemon";
 import { Link } from "react-router-dom";
 
 interface PokemonCardProps {
@@ -9,7 +8,7 @@ interface PokemonCardProps {
 
 const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
   return (
-    <div className="card col-xl-2 col-lg-3 col-md-3 col-sm-5 shadow pokemon-card">
+    <div className="card col-xl-2 col-lg-3 col-md-3 col-sm-5 shadow glass">
       <img
         src={
           pokemon.imageUrl ||

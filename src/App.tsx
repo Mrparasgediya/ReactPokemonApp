@@ -1,5 +1,5 @@
 import "./App.css";
-import PokemonCardsContainer from "./components/PokemonCardsContainer/PokemonCardsContainer";
+import PokemonCardsContainer from "./components/PokemonCardsContainer";
 import usePokemonApi from "./hooks/usePokemonApi";
 
 function App() {
