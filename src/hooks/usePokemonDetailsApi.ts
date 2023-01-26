@@ -7,12 +7,24 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
 
+  const resetState = () => {
+    if (!isLoading) {
+      setIsLoading(true);
+    }
+    if (error) {
+      setError(null);
+    }
+    if (pokemon) {
+      setPokemon(undefined);
+    }
+  };
+
   const fetchPokemonDetails = async (idOrName: string | undefined) => {
     try {
       if (!idOrName) {
         throw new Error("Enter valid pokemon id or name");
       }
-      setIsLoading(true);
+      resetState();
       const { data } = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${idOrName}`
       );
@@ -25,8 +37,8 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
         types: data.types.map((currType: any) => currType.type.name),
       };
       setPokemon(pokemon);
-    } catch (error) {
-      setError(error);
+    } catch (error: any) {
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }

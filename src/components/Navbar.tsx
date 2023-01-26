@@ -19,7 +19,10 @@ const Navbar = () => {
         style={{ height: "100% !important" }}
         className="p-0 container d-flex items-center justify-content-between "
       >
-        <Link className="fs-5" to="/">
+        <Link
+          className="fs-5 text-decoration-none text text-reset fw-bold"
+          to="/"
+        >
           PokeApi
         </Link>
         <form onSubmit={searchPokemonFormSubmitHandler}>

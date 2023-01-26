@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import usePokemonDetailsApi from "../hooks/usePokemonDetailsApi";
 
 export const PokemonDetails = () => {
   const { nameOrId } = useParams();
   const { isLoading, error, pokemon } = usePokemonDetailsApi(nameOrId);
-
-  useEffect(() => {
-    console.log(isLoading, error, pokemon);
-  }, [isLoading, error, pokemon]);
 
   if (isLoading) {
     return <div>Loading Pokemon</div>;
