@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import Pokemon from "../types/Pokemon";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import Pokemon from "../types/Pokemon";
 
 const usePokemonApi = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -9,8 +9,8 @@ const usePokemonApi = () => {
 
   const fetchPokemons = async () => {
     try {
-      const { data } = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=20"
+      const data: any = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=12"
       );
       const pokemons: Pokemon[] = data.results.map(
         (currPokemon: any, index: number): Pokemon => {

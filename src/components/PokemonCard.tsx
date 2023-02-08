@@ -8,19 +8,21 @@ interface PokemonCardProps {
 
 const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
   return (
-    <div className="card col-xl-2 col-lg-3 col-md-3 col-sm-5 shadow glass">
+    <div className="h-80  md:h-72 px-5 py-3 glass flex flex-col  rounded-lg hover:scale-105 transition-transform">
       <img
         src={
           pokemon.imageUrl ||
           "https://cdn.pixabay.com/photo/2016/07/23/13/18/pokemon-1536849_960_720.png"
         }
         alt="pokemon"
-        height="170"
+        className="h-full w-full object-contain"
       />
-      <div className="card-body text-center">
-        <h4 className="card-title">{pokemon.name}</h4>
-        <Link to={`/pokemons/${pokemon.name}`}>
-          <button className="btn btn-info">show Detail</button>
+      <div className="flex item-center justify-between flex-wrap">
+        <h4 className="text-2xl font-semibold first-letter:uppercase">
+          {pokemon.name}
+        </h4>
+        <Link to={`/pokemons/${pokemon.name.toLowerCase()}`}>
+          <button className=" btn btn--gradient btn--animate">View</button>
         </Link>
       </div>
     </div>

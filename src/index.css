@@ -1,34 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #9cecfb; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right bottom,
-    #0052d4,
-    #65c7f7,
-    #9cecfb
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    -45deg,
-    #0052d4,
-    #65c7f7,
-    #9cecfb
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  min-height: 100vh;
-  background-repeat: no-repeat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-fuchsia-400  to-violet-500 relative pt-24 min-h-screen bg-no-repeat pb-10;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+@layer components {
+  .app-container {
+    @apply w-9/12 mx-auto;
+  }
+  .btn {
+    @apply text-base text-gray-50 font-medium py-1 px-4 rounded-md shadow-md;
+  }
+  .btn--gradient {
+    @apply bg-gradient-to-br from-fuchsia-400 to-fuchsia-600;
+  }
+  .btn--animate {
+    @apply hover:translate-y-0.5 transition-transform active:scale-75;
+  }
 }
 
-.glass {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white shadow-md;
+  }
+  .glass--blue {
+    @apply bg-blue-500 backdrop-blur-md border border-blue-400 shadow-md;
+  }
+  #userLoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 400px;
+    margin: 100px auto 0;
+    padding: 20px;
+    background-color: rgb(4, 169, 184);
+    border-radius: 10px;
+  }
+  #submitbutton {
+    background-color: rgb(91, 211, 255);
+  }
+
+  .error-text {
+    @apply text-center text-red-600 font-semibold text-4xl;
+  }
 }

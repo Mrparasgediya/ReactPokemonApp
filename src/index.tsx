@@ -1,16 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { PokemonDetails } from "./components/PokemonDetails";
+import App from "./App";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
+import { PokemonDetails } from "./components/PokemonDetails";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

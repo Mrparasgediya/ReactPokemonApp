@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react";
-import Pokemon from "../types/Pokemon";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { addResponseInterceptor } from "../reposeInterceptors";
+import { addRequestInterceptor } from "../requestInterceptor";
+import Pokemon from "../types/Pokemon";
+
+addRequestInterceptor();
+addResponseInterceptor();
 
 const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
   const [pokemon, setPokemon] = useState<Pokemon | undefined>(undefined);
@@ -25,8 +30,8 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
         throw new Error("Enter valid pokemon id or name");
       }
       resetState();
-      const { data } = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${idOrName}`
+      const data: any = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${idOrName.toLowerCase()}`
       );
       const pokemon: Pokemon = {
         id: data.id,
