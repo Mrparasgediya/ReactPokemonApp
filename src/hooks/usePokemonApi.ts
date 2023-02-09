@@ -10,23 +10,19 @@ const usePokemonApi = () => {
   const fetchPokemons = async () => {
     try {
       const data: any = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=12"
+        "http://localhost:8080/pokemon"
       );
-      const pokemons: Pokemon[] = data.results.map(
-        (currPokemon: any, index: number): Pokemon => {
-          return {
-            height: 0,
-            name: currPokemon.name,
-            id: index + 1,
-            types: [],
-            weight: 0,
-            imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-              index + 1
-            }.png`,
-          };
+      const pokemons: Pokemon[] = data.map((data: any): Pokemon => {
+        return {
+          id: data.id,
+          name: data.name,
+          power: {
+            id: data.power.id,
+            name: data.power.name
+          },
+          imageUrl: data.imageUrl
         }
-      );
-
+      })
       setPokemons(pokemons);
       setError(null);
       setIsLoading(false);

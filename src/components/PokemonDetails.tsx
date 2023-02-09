@@ -23,17 +23,11 @@ export const PokemonDetails = () => {
           />
           <ul className="card-body text-center list-unstyled">
             <li>Name:{pokemon.name}</li>
-            <li>Weight:{pokemon.weight}</li>
-            <li>Height:{pokemon.height}</li>
 
             <li className="my-2 mx-auto">
-              {pokemon.types.map((currPokemonType, idx) => {
-                return (
-                  <span key={idx} className="badge bg-secondary mx-1 bg-info">
-                    {currPokemonType}
-                  </span>
-                );
-              })}
+              <span className="badge bg-secondary mx-1 bg-info">
+                {pokemon.power.name}
+              </span>
             </li>
             <li>
               <Link to="/">

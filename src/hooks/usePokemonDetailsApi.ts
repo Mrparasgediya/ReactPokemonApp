@@ -31,15 +31,17 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
       }
       resetState();
       const data: any = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${idOrName.toLowerCase()}`
+        `http://localhost:8080/pokemon/${idOrName.toLowerCase()}`
       );
       const pokemon: Pokemon = {
         id: data.id,
         name: data.name,
-        height: data.height,
-        weight: data.weight,
         imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
-        types: data.types.map((currType: any) => currType.type.name),
+        power: {
+          id: data.power.id,
+          name: data.power.name
+        }
+
       };
       setPokemon(pokemon);
     } catch (error: any) {

@@ -21,7 +21,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
         <h4 className="text-2xl font-semibold first-letter:uppercase">
           {pokemon.name}
         </h4>
-        <Link to={`/pokemons/${pokemon.name.toLowerCase()}`}>
+        <Link to={`/pokemons/${pokemon.id}`}>
           <button className=" btn btn--gradient btn--animate">View</button>
         </Link>
       </div>
