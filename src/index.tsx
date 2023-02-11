@@ -8,6 +8,7 @@ import {
 import App from "./App";
 import "./index.css";
 import AddPokemonPage from "./pages/AddPokemonPage";
+import AddPowerPage from "./pages/AddPowerPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
@@ -25,7 +26,16 @@ const router = createBrowserRouter([
       },
       {
         path: "powers",
-        element: <PowersPage />,
+        children: [
+          {
+            path: "",
+            element: <PowersPage />,
+          },
+          {
+            path: "new",
+            element: <AddPowerPage />,
+          },
+        ],
       },
       {
         path: "pokemons/",
