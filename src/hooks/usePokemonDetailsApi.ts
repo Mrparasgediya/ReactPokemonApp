@@ -31,12 +31,12 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
       }
       resetState();
       const data: any = await axios.get(
-        `http://localhost:8080/pokemon/${idOrName.toLowerCase()}`
+        `${process.env.REACT_APP_API_BASE_URL}/pokemon/${idOrName.toLowerCase()}`
       );
       const pokemon: Pokemon = {
         id: data.id,
         name: data.name,
-        imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`,
+        imageUrl: data.imageUrl,
         power: {
           id: data.power.id,
           name: data.power.name

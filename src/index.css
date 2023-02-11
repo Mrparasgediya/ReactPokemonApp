@@ -12,7 +12,7 @@
     @apply w-9/12 mx-auto;
   }
   .btn {
-    @apply text-base text-gray-50 font-medium py-1 px-4 rounded-md shadow-md;
+    @apply text-base text-gray-50 font-medium py-1 px-4 rounded-md shadow-md disabled:opacity-90;
   }
   .btn--gradient {
     @apply bg-gradient-to-br from-fuchsia-400 to-fuchsia-600;

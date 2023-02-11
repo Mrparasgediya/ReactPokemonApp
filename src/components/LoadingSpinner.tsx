@@ -1,4 +1,6 @@
-const LoadingSpinner = () => {
+import { FC } from "react";
+
+const LoadingSpinner: FC<{ color?: "default" | "purple" }> = ({ color }) => {
   return (
     <div
       aria-label="Loading..."
@@ -6,7 +8,9 @@ const LoadingSpinner = () => {
       className="flex items-center space-x-2"
     >
       <svg
-        className="h-10 w-10 animate-spin stroke-gray-50"
+        className={`h-10 w-10 animate-spin ${
+          color === "purple" ? "stroke-fuchsia-500" : "stroke-gray-50"
+        }`}
         viewBox="0 0 256 256"
       >
         <line
@@ -82,7 +86,11 @@ const LoadingSpinner = () => {
           strokeWidth="24"
         ></line>
       </svg>
-      <span className="text-lg font-semibold text-gray-50">
+      <span
+        className={`text-lg font-semibold ${
+          color === "purple" ? "text-fuchsia-500" : "text-gray-50"
+        }`}
+      >
         Loading Pokemon...
       </span>
     </div>

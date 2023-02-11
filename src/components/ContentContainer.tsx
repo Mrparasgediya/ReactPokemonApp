@@ -3,14 +3,14 @@ import LoadingSpinner from "./LoadingSpinner";
 
 const ContentContainer: FC<{
   children: ReactElement;
-  isLoading: boolean;
-  error: string;
+  isLoading?: boolean;
+  error?: string;
 }> = ({ children, isLoading, error }) => {
   return (
     <div
       className={`min-h-[75vh] ${
-        isLoading ? "flex items-center justify-center" : ""
-      } app-container mx-auto`}
+        isLoading ? "items-center" : "items-start"
+      } app-container mx-auto flex  justify-center`}
     >
       {isLoading ? (
         <LoadingSpinner />

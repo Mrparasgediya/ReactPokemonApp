@@ -6,16 +6,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./components/ErrorPage";
-import Home from "./components/Home";
-import { PokemonDetails } from "./components/PokemonDetails";
 import "./index.css";
+import AddPokemonPage from "./pages/AddPokemonPage";
+import ErrorPage from "./pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
-    element: <Home />,
+    element: <HomePage />,
     children: [
       {
         path: "",
@@ -29,8 +30,12 @@ const router = createBrowserRouter([
             element: <Navigate to="/" />,
           },
           {
+            path: "new",
+            element: <AddPokemonPage />,
+          },
+          {
             path: ":nameOrId",
-            element: <PokemonDetails />,
+            element: <PokemonDetailsPage />,
           },
         ],
       },

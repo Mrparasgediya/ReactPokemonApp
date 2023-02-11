@@ -10,7 +10,7 @@ const usePokemonApi = () => {
   const fetchPokemons = async () => {
     try {
       const data: any = await axios.get(
-        "http://localhost:8080/pokemon"
+        `${process.env.REACT_APP_API_BASE_URL}/pokemon`
       );
       const pokemons: Pokemon[] = data.map((data: any): Pokemon => {
         return {
