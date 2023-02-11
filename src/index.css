@@ -29,6 +29,9 @@
   .glass--blue {
     @apply bg-blue-500 backdrop-blur-md border border-blue-400 shadow-md;
   }
+  .glass--red {
+    @apply bg-red-500 backdrop-blur-md border border-red-400 shadow-md;
+  }
   #userLoginForm {
     display: flex;
     flex-direction: column;

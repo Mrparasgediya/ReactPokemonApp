@@ -1,6 +1,9 @@
 import { FC } from "react";
 
-const LoadingSpinner: FC<{ color?: "default" | "purple" }> = ({ color }) => {
+const LoadingSpinner: FC<{
+  color?: "default" | "purple";
+  loadingText?: string;
+}> = ({ color, loadingText }) => {
   return (
     <div
       aria-label="Loading..."
@@ -91,7 +94,7 @@ const LoadingSpinner: FC<{ color?: "default" | "purple" }> = ({ color }) => {
           color === "purple" ? "text-fuchsia-500" : "text-gray-50"
         }`}
       >
-        Loading Pokemon...
+        {loadingText || "Loading ..."}
       </span>
     </div>
   );

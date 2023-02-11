@@ -11,6 +11,7 @@ import AddPokemonPage from "./pages/AddPokemonPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
+import PowersPage from "./pages/PowersPage";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <App />,
+      },
+      {
+        path: "powers",
+        element: <PowersPage />,
       },
       {
         path: "pokemons/",

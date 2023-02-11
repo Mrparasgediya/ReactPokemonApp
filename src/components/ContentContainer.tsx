@@ -2,10 +2,11 @@ import { FC, ReactElement } from "react";
 import LoadingSpinner from "./LoadingSpinner";
 
 const ContentContainer: FC<{
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
   isLoading?: boolean;
   error?: string;
-}> = ({ children, isLoading, error }) => {
+  loadingText?: string;
+}> = ({ children, isLoading, error, loadingText }) => {
   return (
     <div
       className={`min-h-[75vh] ${
@@ -13,7 +14,7 @@ const ContentContainer: FC<{
       } app-container mx-auto flex  justify-center`}
     >
       {isLoading ? (
-        <LoadingSpinner />
+        <LoadingSpinner loadingText={loadingText} />
       ) : error ? (
         <div className="error-text">Error: {error}</div>
       ) : (
