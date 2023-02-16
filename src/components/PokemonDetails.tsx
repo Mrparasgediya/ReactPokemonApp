@@ -40,11 +40,12 @@ export const PokemonDetails: FC<{ pokemon: Pokemon | undefined }> = ({
       />
       <ul className="card-body text-center list-unstyled">
         <li>Name:{pokemon.name}</li>
-
-        <li className="my-2 mx-auto">
-          <span className="badge bg-secondary mx-1 bg-info">
-            {pokemon.power.name}
-          </span>
+        <li className="my-2 mx-auto flex items-center gap-1 flex-wrap justify-center">
+          {pokemon.powers.map((currPower) => (
+            <span className="bg-gradient-to-tl from-sky-400 to-blue-500 px-3 text-white rounded-md py-1 align-middle ">
+              {currPower.name}
+            </span>
+          ))}
         </li>
         <li className="flex items-center justify-center gap-2">
           <Link to="/">

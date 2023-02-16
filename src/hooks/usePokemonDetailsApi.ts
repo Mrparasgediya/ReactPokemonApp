@@ -31,17 +31,15 @@ const usePokemonDetailsApi = (pokemonIdOrName: string | undefined) => {
       }
       resetState();
       const data: any = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/pokemon/${idOrName.toLowerCase()}`
+        `${
+          process.env.REACT_APP_API_BASE_URL
+        }/pokemon/${idOrName.toLowerCase()}`
       );
       const pokemon: Pokemon = {
         id: data.id,
         name: data.name,
         imageUrl: data.imageUrl,
-        power: {
-          id: data.power.id,
-          name: data.power.name
-        }
-
+        powers: data.powers,
       };
       setPokemon(pokemon);
     } catch (error: any) {

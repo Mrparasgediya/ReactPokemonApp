@@ -16,13 +16,10 @@ const usePokemonApi = () => {
         return {
           id: data.id,
           name: data.name,
-          power: {
-            id: data.power.id,
-            name: data.power.name
-          },
-          imageUrl: data.imageUrl
-        }
-      })
+          powers: data.powers,
+          imageUrl: data.imageUrl,
+        };
+      });
       setPokemons(pokemons);
       setError(null);
       setIsLoading(false);
