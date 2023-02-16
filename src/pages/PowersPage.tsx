@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ContentContainer from "../components/ContentContainer";
 import PowerList from "../components/PowerList";
 import { Power } from "../types/Power";
@@ -29,10 +28,6 @@ const PowersPage = () => {
     }
   };
 
-  const removePower = (id: number) => {
-    setPowers(powers.filter((currPower) => currPower.id !== id));
-  };
-
   useEffect(() => {
     fetchPowers();
   }, []);
@@ -46,11 +41,8 @@ const PowersPage = () => {
       <div className="space-y-10 max-sm:w-11/12 w-96 mx-auto">
         <div className="glass rounded-md shadow-md px-2 py-1 flex items-center justify-between">
           <span className="font-bold text-lg">Powers</span>
-          <Link to="/powers/new">
-            <button className="btn--gradient btn">Add Power</button>
-          </Link>
         </div>
-        <PowerList powers={powers} removePowerHandler={removePower} />
+        <PowerList powers={powers} />
       </div>
     </ContentContainer>
   );

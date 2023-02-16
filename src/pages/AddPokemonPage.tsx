@@ -37,7 +37,7 @@ const AddPokemonPage = () => {
       <div className="w-80 mx-auto space-y-3 glass rounded-md p-2">
         <h2 className="font-semibold text-xl text-center">Add Pokemon</h2>
         <div
-          className={`h-[260px] ${
+          className={`${
             isPowersLoading ? "flex items-center justify-center" : ""
           }`}
         >
